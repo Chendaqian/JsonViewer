@@ -1,4 +1,5 @@
-using Json.Visualizer;
+using Json.JsonVisualizerVSIX;
+
 
 using Microsoft.VisualBasic;
 using Microsoft.VisualStudio.DebuggerVisualizers;
@@ -13,8 +14,8 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using static Json.JsonVisualizerVSIX.JsonVisualizer;
 
-using static Json.Visualizer.JsonVisualizer;
 
 #region assembly
 
@@ -42,11 +43,11 @@ using static Json.Visualizer.JsonVisualizer;
 [assembly: DebuggerVisualizer(typeof(JsonVisualizer), typeof(ObjectSource), Target = typeof(Stack<>), Description = "Stack Visualizer")]
 //Other classes
 [assembly: DebuggerVisualizer(typeof(JsonVisualizer), typeof(ObjectSource), Target = typeof(CollectionBase), Description = "Collection Visualizer")]
-[assembly: DebuggerVisualizer(typeof(JsonVisualizer), Target = typeof(string), Description = "String Visualizer")]
+//[assembly: DebuggerVisualizer(typeof(JsonVisualizer), Target = typeof(string), Description = "String Visualizer")]
 
 #endregion assembly
 
-namespace Json.Visualizer
+namespace Json.JsonVisualizerVSIX
 {
     public class JsonVisualizer : DialogDebuggerVisualizer
     {
@@ -54,7 +55,9 @@ namespace Json.Visualizer
         {
             using (JsonVisualizerForm form = new JsonVisualizerForm())
             {
-                form.Viewer.Json = objectProvider.GetObject().ToString();
+      
+                form.Viewer.txtJson.Text = objectProvider.GetObject().ToString();
+                //form.Viewer.Json = objectProvider.GetObject().ToString();
                 windowService.ShowDialog(form);
             }
         }
@@ -64,7 +67,6 @@ namespace Json.Visualizer
             public override void GetData(object target, Stream outgoingData)
             {
                 DataTable dtData = null;
-
                 Type type = target.GetType();
 
                 switch (target)
@@ -117,10 +119,13 @@ namespace Json.Visualizer
                 dtData.TableName = Information.TypeName(target);
 
                 string json = JsonConvert.SerializeObject(target);
+                System.IO.File.WriteAllText("c:\\json.log", json.ToString());
+
                 dtData.Rows.Add(dtData.NewRow()["Value"] = json);
                 dtData.AcceptChanges();
+                System.IO.File.WriteAllText("c:\\dtData.log", JsonConvert.SerializeObject(dtData));
 
-                VisualizerObjectSource.Serialize(outgoingData, dtData);
+                VisualizerObjectSource.Serialize(outgoingData, json);
             }
 
             private DataTable PopulateCollectionInfo(NameValueCollection coll)

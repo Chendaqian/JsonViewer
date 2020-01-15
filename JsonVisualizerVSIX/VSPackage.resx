@@ -1,17 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+    VS SDK Notes: This resx file contains the resources that will be consumed from your package by Visual Studio.
+    For example, Visual Studio will attempt to load resource '400' from this resource stream when it needs to
+    load your package's icon. Because Visual Studio will always look in the VSPackage.resources stream first for
+    resources it needs, you should put additional resources that Visual Studio will load directly into this resx
+    file.
+
+    Resources that you would like to access directly from your package in a strong-typed fashion should be stored
+    in Resources.resx or another resx file.
+-->
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +36,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -117,45 +127,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="mnuTree.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>203, 17</value>
-  </metadata>
-  <metadata name="imgList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>452, 17</value>
-  </metadata>
-  <data name="imgList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAW
-        BQAAAk1TRnQBSQFMAgEBAwEAAVQBAAFUAQABEAEAARABAAT/AREBAAj/AUIBTQE2BwABNgMAASgDAAFA
-        AwABEAMAAQEBAAEQBgABCCgAAb8Bc3wAAb8BcwHTAQABvwFzeAABvwFzAZYBGQF7AS4B0wEAAb8BczAA
-        AX4BYwHTAQAB+wFWPAABEgE2ARIBNgF7AS4BPwFPAd0BPgF7AS4B0wEAAb8BcwgAAcYBGAHGARgBxgEY
-        BgABxgEYAcYBGAHGARgSAAF+AWMBegEuAdMBAAHTAQABHAFbOgABEgE2AgABvwFzAXsBLgE/AU8B3QE+
-        AXsBLgHTAQABvwFzBgABxgEYDgABxgEYEAABfQFfAXoBLgF7AS4B0wEAAdMBAAHTAQABHAFbOAABEgE2
-        BAABvwFzAXsBLgE/AU8B2QEhAb8BcwgAAcYBGA4AAcYBGBAAAXsBLgF7AS4BewEuAdMBAAHTAQAB0wEA
-        AdMBAAE8AV8uAAG7AXsGAAESATYGAAF+AXMBewEuAb8BcwoAAcYBGA4AAcYBGBAAAXsBLgF7AS4B3QE+
-        AV8BVwGWARkB0wEAAdMBAAHTLQABuwF7AeEBTQG7AXsEAAESATYEAAG/AX8BsQFEAX4BcwwAAcYBGA4A
-        AcYBGBAAAXsBLgHdAUIBfwFbAV8BUwF/AVsBdQEVAdMBAAHTKwABuwF7AeEBTQHDAXYB4QFNAbsBewIA
-        ARIBNgIAAb8BfwH2AVgB2wFtAbEBRAG/AX8KAAHGARgOAAHGARgQAAHcAT4BHgFLAT8BTwE/AU8BXwFP
-        AX8BWwE1AQ0B0ykAAbsBewHhAU0BKQF7AQYBdwHlAXYBgQFBARIBNgESATYBEgE2AbsBbQG/AX4BfwF+
-        AdsBbQGxAUQBvwF/CAABxgEYDgABxgEYEAABvwFrAdwBPgEeAUcBPwFPAT8BTwFfAVMBPgFPAXYBFSgA
-        AaIBcgGQAXsBTQF7ASoBewEGAXsBwwF2AYEBQQG7AXsCAAG/AX8BmgFpAb8BfgF/AX4B2wFtAbEBRAG/
-        AX8GAAHGARgOAAHGARgSAAGfAWsB3AE+AR4BSwE/AU8BHgFHAdwBPgGfAWsoAAG7AXsBogFyAZABewFN
-        AXsBKgF7AQYBewHDAXYBgQFBAbsBewIAAb8BfwGaAWkBvwF+AZoBaQG/AX8IAAHGARgOAAHGARgUAAGf
-        AWcBvAE+Af0BRgHcAT4BvwFvLAABuwF7AaIBcgGQAXsBTQF7ASoBewEGAXcBwwF2AYEBQQG7AXsCAAG/
-        AX8BmgFpAb8BfwoAAcYBGA4AAcYBGBYAAZ8BawHcAT4B3wFzMAABuwF7AaIBcgGQAXsBTQF7ASoBewFi
-        AWYBuwF7BgABvwF/DAABxgEYAcYBGAHGARgGAAHGARgBxgEYAcYBGE4AAbsBewGiAXIBkAF7AWIBZgG7
-        AXt4AAG7AXsBogFyAbsBe3IAAUIBTQE+BwABPgMAASgDAAFAAwABEAMAAQEBAAEBBQABgBcAA/8BAAH/
-        Ae8E/wIAAf8BxwT/AgAB/wGDAv8B/AF/AgAB/gEBAeMBjwH4AT8CAAH+AYAC7wHwAR8CAAH+AcEC7wHw
-        AQ8CAAHuAeMC7wHwAQ8CAAHGAccC7wHwAQ8CAAGCAYMC7wHwAQ8DAAEBAu8B8AEPAwABgALvAfgBDwMA
-        AUEC7wH8AR8CAAGAASMC7wH+AT8CAAHAAXcB4wGPAv8CAAHgBf8CAAHxBf8CAAs=
-</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="110" xml:space="preserve">
+    <value>VSPackage Extension</value>
   </data>
-  <metadata name="mnuVisualizerPnl.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>299, 17</value>
-  </metadata>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>104, 17</value>
-  </metadata>
+  <data name="112" xml:space="preserve">
+    <value>VSPackage Visual Studio Extension Detailed Info</value>
+  </data>
+  <data name="400" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\VSPackage.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

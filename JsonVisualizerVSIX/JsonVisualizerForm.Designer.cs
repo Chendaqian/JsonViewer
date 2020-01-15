@@ -1,4 +1,4 @@
-namespace Json.Visualizer
+namespace Json.JsonVisualizerVSIX
 {
     partial class JsonVisualizerForm
     {

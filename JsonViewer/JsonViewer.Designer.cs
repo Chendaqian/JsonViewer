@@ -381,14 +381,14 @@ namespace Json.Viewer
             // escapeToolStripMenuItem
             // 
             this.escapeToolStripMenuItem.Name = "escapeToolStripMenuItem";
-            this.escapeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.escapeToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.escapeToolStripMenuItem.Text = "Escape";
             this.escapeToolStripMenuItem.Click += new System.EventHandler(this.escapeToolStripMenuItem_Click);
             // 
             // undoEscapeToolStripMenuItem
             // 
             this.undoEscapeToolStripMenuItem.Name = "undoEscapeToolStripMenuItem";
-            this.undoEscapeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.undoEscapeToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.undoEscapeToolStripMenuItem.Text = "CancelEscape";
             this.undoEscapeToolStripMenuItem.Click += new System.EventHandler(this.undoEscapeToolStripMenuItem_Click);
             // 
@@ -444,12 +444,11 @@ namespace Json.Viewer
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mnuCopy;
         private System.Windows.Forms.ToolStripMenuItem mnuCopyValue;
-        private ICSharpCode.TextEditor.TextEditorControlEx txtJson;
         private System.Windows.Forms.ToolStripDropDownButton toolStripEscape;
         private System.Windows.Forms.ToolStripMenuItem escapeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem undoEscapeToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripDropDownButton1;
         private System.Windows.Forms.ImageList imgList;
-    
+        public ICSharpCode.TextEditor.TextEditorControlEx txtJson;
     }
 }

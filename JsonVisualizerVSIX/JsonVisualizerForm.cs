@@ -13,7 +13,6 @@ namespace JsonVisualizerVSIX
         {
             if (e.KeyCode == Keys.Escape)
                 this.Close();
-
         }
     }
 }

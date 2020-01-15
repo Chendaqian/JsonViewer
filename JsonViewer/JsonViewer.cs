@@ -651,7 +651,6 @@ namespace Json.Viewer
 
         public JsonViewerTreeNode(JsonObject jsonObject)
         {
-
             _jsonObject = jsonObject;
         }
 

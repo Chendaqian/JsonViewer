@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonViewer", "JsonViewer\Js
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonVisualizerVSIX", "JsonVisualizerVSIX\JsonVisualizerVSIX.csproj", "{B832A238-DB47-44EC-83A7-0CF3D7CD932B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSIXProject1", "VSIXProject1\VSIXProject1.csproj", "{A6B34D30-1223-4798-9EFA-20980B7088FD}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{B832A238-DB47-44EC-83A7-0CF3D7CD932B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B832A238-DB47-44EC-83A7-0CF3D7CD932B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B832A238-DB47-44EC-83A7-0CF3D7CD932B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A6B34D30-1223-4798-9EFA-20980B7088FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6B34D30-1223-4798-9EFA-20980B7088FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6B34D30-1223-4798-9EFA-20980B7088FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6B34D30-1223-4798-9EFA-20980B7088FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -135,7 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="JsonViewer.dll.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Key.pfx" />
     <None Include="packages.config">

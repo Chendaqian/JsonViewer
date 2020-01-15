@@ -540,7 +540,9 @@ namespace Json.Viewer
 
         private void btnPaste_Click(object sender, EventArgs e)
         {
-            txtJson.Text = Clipboard.GetText();
+            string text = Clipboard.GetText();
+            if (!string.IsNullOrEmpty(text))
+                txtJson.Text = text;
         }
 
         private void mnuCopy_Click(object sender, EventArgs e)
@@ -585,7 +587,10 @@ namespace Json.Viewer
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(this.txtJson.Text);
+            if (!string.IsNullOrEmpty(txtJson.Text))
+            {
+                Clipboard.SetText(this.txtJson.Text);
+            }
         }
 
         private void escapeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -646,6 +651,7 @@ namespace Json.Viewer
 
         public JsonViewerTreeNode(JsonObject jsonObject)
         {
+
             _jsonObject = jsonObject;
         }
 

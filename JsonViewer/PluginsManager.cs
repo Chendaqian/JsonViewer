@@ -25,10 +25,10 @@ namespace Json.Viewer
                 //AppDomain.CurrentDomain.SetupInformation.PrivateBinPath;
 
                 Configuration config = ConfigurationManager.OpenExeConfiguration(Assembly.GetExecutingAssembly().Location);
-                if (config == null)
-                    InitDefaults();
-                ViewerConfiguration viewerConfig = (ViewerConfiguration)config.GetSection("jsonViewer");
-                InternalConfig(viewerConfig);
+                //if (config == null)
+                InitDefaults();
+                //ViewerConfiguration viewerConfig = (ViewerConfiguration)config.GetSection("jsonViewer");
+                //InternalConfig(viewerConfig);
             }
             catch
             {

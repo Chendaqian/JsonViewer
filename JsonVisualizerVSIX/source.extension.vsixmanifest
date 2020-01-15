@@ -3,13 +3,14 @@
     <Metadata>
         <Identity Id="JsonVisualizerVSIX.d80427d9-479b-42ba-9752-59f1e0f1505c" Version="1.0" Language="en-US" Publisher="Luckey" />
         <DisplayName>JsonVisualizer</DisplayName>
-        <Description xml:space="preserve">Empty VSIX Project.</Description>
+        <Description xml:space="preserve">Visualizers are components of the Visual Studio debugger user interface. A visualizer creates a dialog box or another interface to display a variable or object in a manner that is appropriate to its data type. Visualizers are represented in the debugger by a magnifying glass icon. When you see the magnifying glass icon in a DataTip, in a debugger variables window, or in the QuickWatch dialog box, you can click the magnifying glass to select a visualizer appropriate to the data type of the corresponding object.</Description>
         <MoreInfo>https://github.com/ChenDaqian/JsonViewer</MoreInfo>
         <License>LICENSE.txt</License>
         <GettingStartedGuide>https://github.com/ChenDaqian/JsonViewer/blob/master/README.md</GettingStartedGuide>
         <ReleaseNotes>https://github.com/ChenDaqian/JsonViewer/releases</ReleaseNotes>
         <Icon>Resources\ico.ico</Icon>
-        <Tags>json, Visualizer, jsonVisualizer</Tags>
+        <PreviewImage>preview.png</PreviewImage>
+        <Tags>json, Visualizer, jsonVisualizer, format json</Tags>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[12.0,17.0)" />

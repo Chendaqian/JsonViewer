@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.Shell;
+﻿using Microsoft.VisualStudio;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
 using System;
@@ -11,7 +12,7 @@ using System.Threading;
 
 using Task = System.Threading.Tasks.Task;
 
-namespace Json.JsonVisualizerVSIX
+namespace JsonVisualizerVSIX
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -32,14 +33,15 @@ namespace Json.JsonVisualizerVSIX
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this package for Help/About
-    [Guid(PackageGuidString)]
+    [Guid(VSPackage.PackageGuidString)]
+    [ProvideAutoLoad(cmdUiContextGuid: VSConstants.UICONTEXT.Debugging_string)]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
     public sealed class VSPackage : AsyncPackage
     {
         /// <summary>
         /// VSPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "70174a04-4f33-4a5b-b2be-1ef370378b19";
+        public const string PackageGuidString = "c615cf3e-791d-4304-a21b-3202589b7f03";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="VSPackage"/> class.
@@ -63,10 +65,20 @@ namespace Json.JsonVisualizerVSIX
         /// <returns>A task representing the async work of package initialization, or an already completed task if there is none. Do not return null from this method.</returns>
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
-            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
-            List<string> PAYLOAD_FILE_NAMES = new List<string>() { "ArianKulp.StringExtensions.dll" };
+            await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+
+            // When initialized asynchronously, the current thread may be a background thread at this point.
+            // Do any initialization that requires the UI thread after switching to the UI thread.
+            List<string> PAYLOAD_FILE_NAMES = new List<string>()
+                {
+                    "Json.Viewer.dll",
+                    "ICSharpCode.TextEditorEx.dll",
+                    "ICSharpCode.TextEditorEx.dll",
+                    "JsonVisualizerVSIX.dll",
+                    "Newtonsoft.Json.dll",
+                };
 
             string sourceFolderFullName;
             string destinationFolderFullName;
@@ -76,14 +88,12 @@ namespace Json.JsonVisualizerVSIX
 
             try
             {
-                Initialize();
-
                 // The Visualizer dll is in the same folder than the package because its project is added as reference to this project,
                 // so it is included inside the .vsix file. We only need to deploy it to the correct destination folder.
                 sourceFolderFullName = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
                 // Get the destination folder for visualizers
-                shell = await GetServiceAsync(typeof(SVsShell)) as IVsShell;
+                shell = await base.GetServiceAsync(typeof(SVsShell)) as IVsShell;
                 shell.GetProperty((int)__VSSPROPID2.VSSPROPID_VisualStudioDir, out documentsFolderFullNameObject);
                 documentsFolderFullName = documentsFolderFullNameObject.ToString();
                 destinationFolderFullName = Path.Combine(documentsFolderFullName, "Visualizers");
@@ -98,7 +108,7 @@ namespace Json.JsonVisualizerVSIX
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.ToString());
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
         }
 

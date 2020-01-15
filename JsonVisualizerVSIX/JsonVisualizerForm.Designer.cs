@@ -1,4 +1,4 @@
-namespace Json.JsonVisualizerVSIX
+namespace JsonVisualizerVSIX
 {
     partial class JsonVisualizerForm
     {
@@ -29,35 +29,35 @@ namespace Json.JsonVisualizerVSIX
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JsonVisualizerForm));
-            this.Viewer = new Json.Viewer.JsonViewer();
+            this.jsonViewer = new Json.Viewer.JsonViewer();
             this.SuspendLayout();
             // 
-            // Viewer
+            // jsonViewer
             // 
-            this.Viewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Viewer.Json = null;
-            this.Viewer.Location = new System.Drawing.Point(0, 0);
-            this.Viewer.Name = "Viewer";
-            this.Viewer.Size = new System.Drawing.Size(875, 570);
-            this.Viewer.TabIndex = 0;
+            this.jsonViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.jsonViewer.Json = null;
+            this.jsonViewer.Location = new System.Drawing.Point(0, 0);
+            this.jsonViewer.Name = "jsonViewer";
+            this.jsonViewer.Size = new System.Drawing.Size(875, 570);
+            this.jsonViewer.TabIndex = 0;
             // 
             // JsonVisualizerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 570);
-            this.Controls.Add(this.Viewer);
+            this.Controls.Add(this.jsonViewer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "JsonVisualizerForm";
             this.Text = "JsonVisualizerForm";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.JsonVisualizerForm_KeyDown);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        internal Json.Viewer.JsonViewer Viewer;
-
+        public global::Json.Viewer.JsonViewer jsonViewer;
     }
 }

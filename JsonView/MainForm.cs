@@ -303,5 +303,21 @@ namespace Json.JsonView
             c = this.JsonViewer.Controls.Find("txtJson", true)[0];
             ((ICSharpCode.TextEditor.TextEditorControlEx)c).SaveFile(fileName);
         }
+
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData) //¼¤»î»Ø³µ¼ü
+        {
+            int WM_KEYDOWN = 256;
+            int WM_SYSKEYDOWN = 260;
+            if (msg.Msg == WM_KEYDOWN | msg.Msg == WM_SYSKEYDOWN)
+            {
+                switch (keyData)
+                {
+                    case Keys.Escape:
+                        this.Close();
+                        break;
+                }
+            }
+            return false;
+        }
     }
 }

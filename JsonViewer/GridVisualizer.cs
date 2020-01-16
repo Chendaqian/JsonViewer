@@ -58,7 +58,7 @@ namespace Json.Viewer
                         value = rowValue.Value.ToString();
                     }
                     else
-                        value = String.Empty;
+                        value = string.Empty;
                     rowValues.Add(value);
                 }
                 ListViewItem rowItem = new ListViewItem(rowValues.ToArray());

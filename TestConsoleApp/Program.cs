@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.IO;
+using System.Net;
 using System.Web;
+using System.Xml;
 
 namespace TestConsoleApp
 {
@@ -85,8 +89,28 @@ namespace TestConsoleApp
     '.NET'
   ]
 }";
-
+            TestXML();
             Console.ReadKey();
+        }
+
+        private static void TestXML()
+        {
+            string url = "https://im.yuge.com/im/yx/attachment/text/1roqp5qrz8dy3ws813eiky53is.xml";//新版
+            using (Stream stream = WebRequest.Create(url).GetResponse().GetResponseStream())
+            {
+                XmlDocument xmldoc = new XmlDocument();
+
+
+                System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
+                stopwatch.Start();
+
+
+                xmldoc.Load(stream);
+                string json = JsonConvert.SerializeXmlNode(xmldoc).Replace("@", "").Replace("#", "");
+                XmlDocument doc = (XmlDocument)JsonConvert.DeserializeXmlNode(json, "root");
+
+                string jsonText = JsonConvert.SerializeXmlNode(doc, Newtonsoft.Json.Formatting.Indented, true);
+            }
         }
     }
 }

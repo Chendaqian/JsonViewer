@@ -44,7 +44,7 @@ namespace Json.JsonView
         private void LoadFromClipboard()
         {
             string json = Clipboard.GetText();
-            if (!String.IsNullOrEmpty(json))
+            if (!string.IsNullOrEmpty(json))
             {
                 JsonViewer.ShowTab(Tabs.Viewer);
                 JsonViewer.Json = json;

@@ -74,10 +74,19 @@ namespace Json.Viewer
                 {
                     if (JsonType == JsonType.Value)
                     {
-                        string val = (Value == null ? "<null>" : Value.ToString());
+                        string val = null; // (Value == null ? "<null>" : Value.ToString());
+                        if (Value == null)
+                            val = "<null>";
+                        else
+                        {
+                            string s = Value.ToString();
+                            if (s.Length > 5000)
+                                s = s.Substring(0, 5000);
+                            val = s;
+                        }
                         if (Value is string)
                             val = "\"" + val + "\"";
-                        _text = String.Format("{0} : {1}", Id, val);
+                        _text = string.Format("{0} : {1}", Id, val);
                     }
                     else
                         _text = Id;

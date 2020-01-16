@@ -76,7 +76,7 @@ namespace Json.Viewer
 
         public void Visualize(JsonObject jsonObject)
         {
-            tb.Text = String.Format("Array {0} has {1} items", jsonObject.Id, jsonObject.Fields.Count);
+            tb.Text = string.Format("Array {0} has {1} items", jsonObject.Id, jsonObject.Fields.Count);
         }
 
         public string DisplayName

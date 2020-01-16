@@ -32,7 +32,7 @@ namespace Json.Viewer
             }
             catch (Exception e)
             {
-                MessageBox.Show(String.Format(Resources.ConfigMessage, e.Message), "Json Viewer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(string.Format(Resources.ConfigMessage, e.Message), "Json Viewer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -75,7 +75,7 @@ namespace Json.Viewer
                 try
                 {
                     Reset();
-                    if (!String.IsNullOrEmpty(_json))
+                    if (!string.IsNullOrEmpty(_json))
                     {
                         JsonObjectTree tree = JsonObjectTree.Parse(_json);
                         VisualizeJsonTree(tree);
@@ -159,7 +159,7 @@ namespace Json.Viewer
 
         public void Clear()
         {
-            Json = String.Empty;
+            Json = string.Empty;
         }
 
         public bool HasErrors
@@ -211,7 +211,7 @@ namespace Json.Viewer
 
         public TreeNode FindNext(TreeNode startNode, string text, bool includeSelected)
         {
-            if (text == String.Empty)
+            if (text == string.Empty)
                 return startNode;
 
             if (includeSelected && IsMatchingNode(startNode, text))
@@ -307,7 +307,7 @@ namespace Json.Viewer
                 string json = txtJson.Text;
                 JsonSerializer s = new JsonSerializer();
                 JsonReader reader = new JsonTextReader(new StringReader(json));
-                Object jsonObject = s.Deserialize(reader);
+                object jsonObject = s.Deserialize(reader);
                 if (jsonObject != null)
                 {
                     StringWriter sWriter = new StringWriter();

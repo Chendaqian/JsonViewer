@@ -44,7 +44,7 @@ namespace Json.JsonView
         private void LoadFromClipboard()
         {
             string json = Clipboard.GetText();
-            if (!String.IsNullOrEmpty(json))
+            if (!string.IsNullOrEmpty(json))
             {
                 JsonViewer.ShowTab(Tabs.Viewer);
                 JsonViewer.Json = json;
@@ -290,13 +290,9 @@ namespace Json.JsonView
             {
                 saveFileDialog.Filter = "Json files (*.json)|*.json|All files (*.*)|*.*";
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
                     fileName = saveFileDialog.FileName;
-                }
                 else
-                {
                     return;
-                }
             }
 
             Control c;
@@ -304,20 +300,14 @@ namespace Json.JsonView
             ((ICSharpCode.TextEditor.TextEditorControlEx)c).SaveFile(fileName);
         }
 
-        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData) //激活回车键
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            int WM_KEYDOWN = 256;
-            int WM_SYSKEYDOWN = 260;
-            if (msg.Msg == WM_KEYDOWN | msg.Msg == WM_SYSKEYDOWN)
-            {
-                switch (keyData)
-                {
-                    case Keys.Escape:
-                        this.Close();
-                        break;
-                }
-            }
-            return false;
+            //e.Cancel = MessageBox.Show("是否退出？", "询问", MessageBoxButtons.OK, MessageBoxIcon.Question) != DialogResult.Yes;
+        }
+
+        private void MainForm_PreviewKeyDown_1(object sender, PreviewKeyDownEventArgs e)
+        {
+            //this.Close();
         }
     }
 }

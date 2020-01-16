@@ -73,9 +73,10 @@ namespace TestConsoleApp
             //List
             var list = new List<int> { 1, 2, 3 };
 
+            // 测试 json
             string json = @"{
   'NAME' : 'Luckey' ,
-  'QQ' : 644733521 ,
+  'Sex' : '男' ,
   'LOCATION' : {
      'PROVINCE' : 'LN' ,
      'CITY' : 'DL'

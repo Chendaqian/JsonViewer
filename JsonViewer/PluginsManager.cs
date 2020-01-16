@@ -8,8 +8,8 @@ namespace Json.Viewer
 {
     internal class PluginsManager
     {
-        //≤‚ ‘Õ∆ÀÕ
         private List<IJsonViewerPlugin> plugins = new List<IJsonViewerPlugin>();
+
         private List<ICustomTextProvider> textVisualizers = new List<ICustomTextProvider>();
         private List<IJsonVisualizer> visualizers = new List<IJsonVisualizer>();
         private IJsonVisualizer _defaultVisualizer;

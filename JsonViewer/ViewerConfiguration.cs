@@ -5,12 +5,6 @@ namespace Json.Viewer
     public class ViewerConfiguration : ConfigurationSection
     {
         [ConfigurationProperty("plugins")]
-        public KeyValueConfigurationCollection Plugins
-        {
-            get
-            {
-                return (KeyValueConfigurationCollection)base["plugins"];
-            }
-        }
+        public KeyValueConfigurationCollection Plugins => (KeyValueConfigurationCollection)base["plugins"];
     }
 }

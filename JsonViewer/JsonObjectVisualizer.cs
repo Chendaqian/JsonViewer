@@ -9,10 +9,7 @@ namespace Json.Viewer
             InitializeComponent();
         }
 
-        string IJsonViewerPlugin.DisplayName
-        {
-            get { return "Property Grid"; }
-        }
+        string IJsonViewerPlugin.DisplayName => "Property Grid";
 
         Control IJsonVisualizer.GetControl(JsonObject jsonObject)
         {
@@ -21,7 +18,7 @@ namespace Json.Viewer
 
         void IJsonVisualizer.Visualize(JsonObject jsonObject)
         {
-            this.pgJsonObject.SelectedObject = new JsonTreeObjectTypeDescriptor(jsonObject);
+            pgJsonObject.SelectedObject = new JsonTreeObjectTypeDescriptor(jsonObject);
         }
 
         bool IJsonViewerPlugin.CanVisualize(JsonObject jsonObject)

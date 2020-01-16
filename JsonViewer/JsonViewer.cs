@@ -1,7 +1,3 @@
-using Json.Viewer.Properties;
-
-using Newtonsoft.Json;
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,14 +8,17 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
+using Newtonsoft.Json;
+
+using Json.Viewer.Properties;
+
 namespace Json.Viewer
 {
     public partial class JsonViewer : UserControl
     {
         private string _json;
-        private int _maxErrorCount = 25;
         private ErrorDetails _errorDetails;
-        private PluginsManager _pluginsManager = new PluginsManager();
+        private readonly PluginsManager _pluginsManager = new PluginsManager();
         private bool _updating;
         private Control _lastVisualizerControl;
 
@@ -39,10 +38,7 @@ namespace Json.Viewer
         [Editor("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
         public string Json
         {
-            get
-            {
-                return _json;
-            }
+            get => _json;
             set
             {
                 if (_json != value)
@@ -55,17 +51,7 @@ namespace Json.Viewer
         }
 
         [DefaultValue(25)]
-        public int MaxErrorCount
-        {
-            get
-            {
-                return _maxErrorCount;
-            }
-            set
-            {
-                _maxErrorCount = value;
-            }
-        }
+        public int MaxErrorCount { get; set; } = 25;
 
         private void Redraw()
         {
@@ -75,11 +61,11 @@ namespace Json.Viewer
                 try
                 {
                     Reset();
-                    if (!string.IsNullOrEmpty(_json))
-                    {
-                        JsonObjectTree tree = JsonObjectTree.Parse(_json);
-                        VisualizeJsonTree(tree);
-                    }
+                    if (string.IsNullOrEmpty(_json))
+                        return;
+
+                    JsonObjectTree tree = JsonObjectTree.Parse(_json);
+                    VisualizeJsonTree(tree);
                 }
                 finally
                 {
@@ -144,31 +130,17 @@ namespace Json.Viewer
             newNode.SelectedImageIndex = newNode.ImageIndex;
 
             foreach (JsonObject field in jsonObject.Fields)
-            {
                 AddNode(newNode.Nodes, field);
-            }
         }
 
-        public ErrorDetails ErrorDetails
-        {
-            get
-            {
-                return _errorDetails;
-            }
-        }
+        public ErrorDetails ErrorDetails => _errorDetails;
 
         public void Clear()
         {
             Json = string.Empty;
         }
 
-        public bool HasErrors
-        {
-            get
-            {
-                return _errorDetails._err != null;
-            }
-        }
+        public bool HasErrors => _errorDetails._err != null;
 
         private void txtJson_TextChanged(object sender, EventArgs e)
         {
@@ -252,7 +224,7 @@ namespace Json.Viewer
 
         private bool IsMatchingNode(TreeNode startNode, string text)
         {
-            return (startNode.Text.ToLower().Contains(text));
+            return startNode.Text.ToLower().Contains(text);
         }
 
         private JsonViewerTreeNode GetRootNode()
@@ -264,18 +236,19 @@ namespace Json.Viewer
 
         private bool HasNodes()
         {
-            return (tvJson.Nodes.Count > 0);
+            return tvJson.Nodes.Count > 0;
         }
 
         private void txtFind_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            switch (e.KeyCode)
             {
-                FindNext(false, true);
-            }
-            if (e.KeyCode == Keys.Escape)
-            {
-                HideFind();
+                case Keys.Enter:
+                    FindNext(false, true);
+                    break;
+                case Keys.Escape:
+                    HideFind();
+                    break;
             }
         }
 
@@ -531,8 +504,8 @@ namespace Json.Viewer
 
         private void mnuTree_Opening(object sender, CancelEventArgs e)
         {
-            mnuFind.Enabled = (GetRootNode() != null);
-            mnuExpandAll.Enabled = (GetSelectedTreeNode() != null);
+            mnuFind.Enabled = GetRootNode() != null;
+            mnuExpandAll.Enabled = GetSelectedTreeNode() != null;
 
             mnuCopy.Enabled = mnuExpandAll.Enabled;
             mnuCopyValue.Enabled = mnuExpandAll.Enabled;
@@ -589,27 +562,27 @@ namespace Json.Viewer
         {
             if (!string.IsNullOrEmpty(txtJson.Text))
             {
-                Clipboard.SetText(this.txtJson.Text);
+                Clipboard.SetText(txtJson.Text);
             }
         }
 
         private void escapeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.txtJson.Text = this.txtJson.Text.Replace("\"", "\\\"");
+            txtJson.Text = txtJson.Text.Replace("\"", "\\\"");
         }
 
         private void undoEscapeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.txtJson.Text = this.txtJson.Text.Replace("\\", string.Empty);
+            txtJson.Text = txtJson.Text.Replace("\\", string.Empty);
         }
 
         private void toolStripDropDownButton1_Click(object sender, EventArgs e)
         {
-            string json = this.txtJson.Text;
+            string json = txtJson.Text;
             json = json.Replace(Environment.NewLine, string.Empty).Replace(" ", string.Empty);
             // json = JsonConvert.SerializeObject(json,Formatting.Indented);
-            this.txtJson.Text = json;
-            this.txtJson.ActiveTextAreaControl.TextArea.Refresh();
+            txtJson.Text = json;
+            txtJson.ActiveTextAreaControl.TextArea.Refresh();
         }
     }
 
@@ -618,21 +591,9 @@ namespace Json.Viewer
         internal string _err;
         internal int _pos;
 
-        public string Error
-        {
-            get
-            {
-                return _err;
-            }
-        }
+        public string Error => _err;
 
-        public int Position
-        {
-            get
-            {
-                return _pos;
-            }
-        }
+        public int Position => _pos;
 
         public void Clear()
         {
@@ -643,9 +604,9 @@ namespace Json.Viewer
 
     public class JsonViewerTreeNode : TreeNode
     {
-        private JsonObject _jsonObject;
-        private List<ICustomTextProvider> _textVisualizers = new List<ICustomTextProvider>();
-        private List<IJsonVisualizer> _visualizers = new List<IJsonVisualizer>();
+        private readonly JsonObject _jsonObject;
+        private readonly List<ICustomTextProvider> _textVisualizers = new List<ICustomTextProvider>();
+        private readonly List<IJsonVisualizer> _visualizers = new List<IJsonVisualizer>();
         private bool _init;
         private IJsonVisualizer _lastVisualizer;
 
@@ -654,40 +615,16 @@ namespace Json.Viewer
             _jsonObject = jsonObject;
         }
 
-        public List<ICustomTextProvider> TextVisualizers
-        {
-            get
-            {
-                return _textVisualizers;
-            }
-        }
+        public List<ICustomTextProvider> TextVisualizers => _textVisualizers;
 
-        public List<IJsonVisualizer> Visualizers
-        {
-            get
-            {
-                return _visualizers;
-            }
-        }
+        public List<IJsonVisualizer> Visualizers => _visualizers;
 
-        public JsonObject JsonObject
-        {
-            get
-            {
-                return _jsonObject;
-            }
-        }
+        public JsonObject JsonObject => _jsonObject;
 
         internal bool Initialized
         {
-            get
-            {
-                return _init;
-            }
-            set
-            {
-                _init = value;
-            }
+            get => _init;
+            set => _init = value;
         }
 
         internal void RefreshText()
@@ -706,20 +643,14 @@ namespace Json.Viewer
                 }
             }
             string text = sb.ToString();
-            if (text != this.Text)
-                this.Text = text;
+            if (text != Text)
+                Text = text;
         }
 
         public IJsonVisualizer LastVisualizer
         {
-            get
-            {
-                return _lastVisualizer;
-            }
-            set
-            {
-                _lastVisualizer = value;
-            }
+            get => _lastVisualizer;
+            set => _lastVisualizer = value;
         }
     }
 

@@ -5,9 +5,9 @@ namespace Json.Viewer
 {
     public class JsonFields : IEnumerable<JsonObject>
     {
-        private List<JsonObject> _fields = new List<JsonObject>();
-        private Dictionary<string, JsonObject> _fieldsById = new Dictionary<string, JsonObject>();
-        private JsonObject _parent;
+        private readonly List<JsonObject> _fields = new List<JsonObject>();
+        private readonly Dictionary<string, JsonObject> _fieldsById = new Dictionary<string, JsonObject>();
+        private readonly JsonObject _parent;
 
         public JsonFields(JsonObject parent)
         {
@@ -32,21 +32,9 @@ namespace Json.Viewer
             _parent.Modified();
         }
 
-        public int Count
-        {
-            get
-            {
-                return _fields.Count;
-            }
-        }
+        public int Count => _fields.Count;
 
-        public JsonObject this[int index]
-        {
-            get
-            {
-                return _fields[index];
-            }
-        }
+        public JsonObject this[int index] => _fields[index];
 
         public JsonObject this[string id]
         {

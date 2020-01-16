@@ -66,10 +66,7 @@ namespace Json.Viewer
             }
         }
 
-        string IJsonViewerPlugin.DisplayName
-        {
-            get { return "Grid"; }
-        }
+        string IJsonViewerPlugin.DisplayName => "Grid";
 
         bool IJsonViewerPlugin.CanVisualize(JsonObject jsonObject)
         {

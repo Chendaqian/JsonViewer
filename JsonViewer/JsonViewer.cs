@@ -1,3 +1,4 @@
+using ICSharpCode.TextEditor;
 using Json.Viewer.Properties;
 
 using Newtonsoft.Json;
@@ -172,6 +173,10 @@ namespace Json.Viewer
 
         private void txtJson_TextChanged(object sender, EventArgs e)
         {
+            bool isVisible = this.txtJson.ActiveTextAreaControl.TextArea.Document.TotalNumberOfLines >
+                this.txtJson.ActiveTextAreaControl.TextArea.TextView.VisibleLineCount;
+            this.txtJson.ActiveTextAreaControl.ShowScrollBars(Orientation.Vertical, isVisible);
+
             Json = txtJson.Text;
         }
 

@@ -31,8 +31,8 @@ namespace Json.Viewer
 
     public class JsonObjectTree
     {
-        private JsonObject _root;
-        private static Regex dateRegex = new Regex("^/Date\\(([0-9]*)([+-][0-9]{4}){0,1}\\)/$");
+        private readonly JsonObject _root;
+        private static readonly Regex dateRegex = new Regex("^/Date\\(([0-9]*)([+-][0-9]{4}){0,1}\\)/$");
 
         public static JsonObjectTree Parse(string json)
         {
@@ -120,12 +120,6 @@ namespace Json.Viewer
             return obj;
         }
 
-        public JsonObject Root
-        {
-            get
-            {
-                return _root;
-            }
-        }
+        public JsonObject Root => _root;
     }
 }

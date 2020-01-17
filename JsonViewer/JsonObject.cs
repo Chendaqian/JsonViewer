@@ -3,13 +3,13 @@ using System.Diagnostics;
 
 namespace Json.Viewer
 {
-    [DebuggerDisplay("Text = {Text}")]
+    [DebuggerDisplay("Text = {" + nameof(Text) + "}")]
     public class JsonObject
     {
         private string _id;
         private object _value;
         private JsonType _jsonType;
-        private JsonFields _fields;
+        private readonly JsonFields _fields;
         private JsonObject _parent;
         private string _text;
 
@@ -20,50 +20,26 @@ namespace Json.Viewer
 
         public string Id
         {
-            get
-            {
-                return _id;
-            }
-            set
-            {
-                _id = value;
-            }
+            get => _id;
+            set => _id = value;
         }
 
         public object Value
         {
-            get
-            {
-                return _value;
-            }
-            set
-            {
-                _value = value;
-            }
+            get => _value;
+            set => _value = value;
         }
 
         public JsonType JsonType
         {
-            get
-            {
-                return _jsonType;
-            }
-            set
-            {
-                _jsonType = value;
-            }
+            get => _jsonType;
+            set => _jsonType = value;
         }
 
         public JsonObject Parent
         {
-            get
-            {
-                return _parent;
-            }
-            set
-            {
-                _parent = value;
-            }
+            get => _parent;
+            set => _parent = value;
         }
 
         public string Text
@@ -95,13 +71,7 @@ namespace Json.Viewer
             }
         }
 
-        public JsonFields Fields
-        {
-            get
-            {
-                return _fields;
-            }
-        }
+        public JsonFields Fields => _fields;
 
         internal void Modified()
         {
@@ -121,7 +91,7 @@ namespace Json.Viewer
         public bool ContainsField(string id, JsonType type)
         {
             JsonObject field = Fields[id];
-            return (field != null && field.JsonType == type);
+            return field != null && field.JsonType == type;
         }
     }
 }

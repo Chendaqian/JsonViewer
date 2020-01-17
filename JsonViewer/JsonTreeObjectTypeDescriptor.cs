@@ -6,7 +6,7 @@ namespace Json.Viewer
 {
     internal class JsonTreeObjectTypeDescriptor : ICustomTypeDescriptor
     {
-        private JsonObject _jsonObject;
+        private readonly JsonObject _jsonObject;
         private PropertyDescriptorCollection _propertyCollection;
 
         public JsonTreeObjectTypeDescriptor(JsonObject jsonObject)
@@ -90,7 +90,7 @@ namespace Json.Viewer
 
     internal class JsonTreeObjectPropertyDescriptor : PropertyDescriptor
     {
-        private JsonObject _jsonObject;
+        private readonly JsonObject _jsonObject;
         private JsonTreeObjectTypeDescriptor[] _jsonObjects;
 
         public JsonTreeObjectPropertyDescriptor(JsonObject jsonObject)
@@ -116,13 +116,7 @@ namespace Json.Viewer
             return false;
         }
 
-        public override Type ComponentType
-        {
-            get
-            {
-                return null;
-            }
-        }
+        public override Type ComponentType => null;
 
         public override object GetValue(object component)
         {
@@ -139,13 +133,7 @@ namespace Json.Viewer
             }
         }
 
-        public override bool IsReadOnly
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool IsReadOnly => false;
 
         public override Type PropertyType
         {

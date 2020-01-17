@@ -8,10 +8,10 @@ namespace Json.Viewer
 {
     internal class PluginsManager
     {
-        private List<IJsonViewerPlugin> plugins = new List<IJsonViewerPlugin>();
+        private readonly List<IJsonViewerPlugin> plugins = new List<IJsonViewerPlugin>();
 
-        private List<ICustomTextProvider> textVisualizers = new List<ICustomTextProvider>();
-        private List<IJsonVisualizer> visualizers = new List<IJsonVisualizer>();
+        private readonly List<ICustomTextProvider> textVisualizers = new List<ICustomTextProvider>();
+        private readonly List<IJsonVisualizer> visualizers = new List<IJsonVisualizer>();
         private IJsonVisualizer _defaultVisualizer;
 
         public PluginsManager()
@@ -39,7 +39,7 @@ namespace Json.Viewer
 
         private void InitDefaults()
         {
-            if (this._defaultVisualizer == null)
+            if (_defaultVisualizer == null)
             {
                 AddPlugin(new JsonObjectVisualizer());
                 AddPlugin(new AjaxNetDateTime());
@@ -84,28 +84,10 @@ namespace Json.Viewer
             }
         }
 
-        public IEnumerable<ICustomTextProvider> TextVisualizers
-        {
-            get
-            {
-                return textVisualizers;
-            }
-        }
+        public IEnumerable<ICustomTextProvider> TextVisualizers => textVisualizers;
 
-        public IEnumerable<IJsonVisualizer> Visualizers
-        {
-            get
-            {
-                return visualizers;
-            }
-        }
+        public IEnumerable<IJsonVisualizer> Visualizers => visualizers;
 
-        public IJsonVisualizer DefaultVisualizer
-        {
-            get
-            {
-                return _defaultVisualizer;
-            }
-        }
+        public IJsonVisualizer DefaultVisualizer => _defaultVisualizer;
     }
 }

@@ -15,20 +15,17 @@ namespace Json.Viewer
 
         private DateTime ConvertJSTicksToDateTime(long ticks)
         {
-            return new DateTime((ticks * 10000) + epoch);
+            return new DateTime(ticks * 10000 + epoch);
         }
 
-        public string DisplayName
-        {
-            get { return "Ajax.Net DateTime"; }
-        }
+        public string DisplayName => "Ajax.Net DateTime";
 
         public bool CanVisualize(JsonObject jsonObject)
         {
             if (jsonObject.JsonType == JsonType.Value && jsonObject.Value is string)
             {
                 string text = (string)jsonObject.Value;
-                return (text.Length > 2 && text[0] == '@' && text[text.Length - 1] == '@');
+                return text.Length > 2 && text[0] == '@' && text[text.Length - 1] == '@';
             }
             return false;
         }
@@ -49,10 +46,7 @@ namespace Json.Viewer
             return new DateTime(year, month, day, hour, min, second, ms).ToString();
         }
 
-        public string DisplayName
-        {
-            get { return "Date"; }
-        }
+        public string DisplayName => "Date";
 
         public bool CanVisualize(JsonObject jsonObject)
         {
@@ -79,14 +73,11 @@ namespace Json.Viewer
             tb.Text = string.Format("Array {0} has {1} items", jsonObject.Id, jsonObject.Fields.Count);
         }
 
-        public string DisplayName
-        {
-            get { return "Sample"; }
-        }
+        public string DisplayName => "Sample";
 
         public bool CanVisualize(JsonObject jsonObject)
         {
-            return (jsonObject.JsonType == JsonType.Array) && (jsonObject.ContainsFields("[0]"));
+            return jsonObject.JsonType == JsonType.Array && jsonObject.ContainsFields("[0]");
         }
     }
 }

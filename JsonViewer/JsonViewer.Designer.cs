@@ -1,3 +1,6 @@
+using ICSharpCode.TextEditor;
+using System.Windows.Forms;
+
 namespace Json.Viewer
 {
     partial class JsonViewer
@@ -160,9 +163,9 @@ namespace Json.Viewer
             // 
             this.imgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList.ImageStream")));
             this.imgList.TransparentColor = System.Drawing.Color.White;
-            this.imgList.Images.SetKeyName(0, "obj.png");
-            this.imgList.Images.SetKeyName(1, "array.png");
-            this.imgList.Images.SetKeyName(2, "prop.png");
+            this.imgList.Images.SetKeyName(0, "obj.ico");
+            this.imgList.Images.SetKeyName(1, "array.ico");
+            this.imgList.Images.SetKeyName(2, "prop.ico");
             // 
             // pnlFind
             // 
@@ -310,6 +313,7 @@ namespace Json.Viewer
             this.txtJson.SyntaxHighlighting = "JavaScript";
             this.txtJson.TabIndex = 7;
             this.txtJson.TextChanged += new System.EventHandler(this.txtJson_TextChanged);
+            this.txtJson.ActiveTextAreaControl.ShowScrollBars(Orientation.Vertical, false);
             // 
             // toolStrip1
             // 
@@ -388,8 +392,8 @@ namespace Json.Viewer
             // undoEscapeToolStripMenuItem
             // 
             this.undoEscapeToolStripMenuItem.Name = "undoEscapeToolStripMenuItem";
-            this.undoEscapeToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.undoEscapeToolStripMenuItem.Text = "CancelEscape";
+            this.undoEscapeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.undoEscapeToolStripMenuItem.Text = "Undo";
             this.undoEscapeToolStripMenuItem.Click += new System.EventHandler(this.undoEscapeToolStripMenuItem_Click);
             // 
             // JsonViewer

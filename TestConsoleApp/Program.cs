@@ -50,12 +50,12 @@ namespace TestConsoleApp
              *  System.Web.HttpResponse.Cookies
              */
 
-            //NameValueCollection
-            //NameValueCollection Params = Request.Params;
-            //NameValueCollection QueryString = Request.QueryString;
-            //NameValueCollection Form = Request.Form;
-            //NameValueCollection RequestHeaders = Request.Headers;
-            //NameValueCollection ResponseHeaders = Response.Headers;
+            // NameValueCollection
+            // NameValueCollection Params = Request.Params;
+            // NameValueCollection QueryString = Request.QueryString;
+            // NameValueCollection Form = Request.Form;
+            // NameValueCollection RequestHeaders = Request.Headers;
+            // NameValueCollection ResponseHeaders = Response.Headers;
             NameValueCollection nameValueCollection = new NameValueCollection
             {
                 {"name1","value1"},
@@ -89,28 +89,8 @@ namespace TestConsoleApp
     '.NET'
   ]
 }";
-            TestXML();
+            Console.WriteLine(json);
             Console.ReadKey();
-        }
-
-        private static void TestXML()
-        {
-            string url = "https://im.yuge.com/im/yx/attachment/text/1roqp5qrz8dy3ws813eiky53is.xml";//新版
-            using (Stream stream = WebRequest.Create(url).GetResponse().GetResponseStream())
-            {
-                XmlDocument xmldoc = new XmlDocument();
-
-
-                System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
-                stopwatch.Start();
-
-
-                xmldoc.Load(stream);
-                string json = JsonConvert.SerializeXmlNode(xmldoc).Replace("@", "").Replace("#", "");
-                XmlDocument doc = (XmlDocument)JsonConvert.DeserializeXmlNode(json, "root");
-
-                string jsonText = JsonConvert.SerializeXmlNode(doc, Newtonsoft.Json.Formatting.Indented, true);
-            }
         }
     }
 }

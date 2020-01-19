@@ -135,6 +135,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="JsonViewer.dll.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

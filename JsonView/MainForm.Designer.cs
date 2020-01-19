@@ -274,7 +274,6 @@ namespace Json.JsonView
             this.JsonViewer.Name = "JsonViewer";
             this.JsonViewer.Size = new System.Drawing.Size(833, 498);
             this.JsonViewer.TabIndex = 0;
-            this.JsonViewer.Load += new System.EventHandler(this.JsonViewer_Load);
             // 
             // MainForm
             // 

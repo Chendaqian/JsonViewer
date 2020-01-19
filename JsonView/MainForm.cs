@@ -284,11 +284,6 @@ namespace Json.JsonView
 
         #endregion MenuItem
 
-
-        private void JsonViewer_Load(object sender, EventArgs e)
-        {
-        }
-
         #endregion EventHandlers
     }
 }

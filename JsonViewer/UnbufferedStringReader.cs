@@ -103,14 +103,14 @@ namespace Json.Viewer
                 {
                     case '\r':
                     case '\n':
-                        {
-                            string text = _s.Substring(Position, num - Position);
-                            Position = num + 1;
-                            if (ch == '\r' && Position < _length && _s[Position] == '\n')
-                                Position++;
+                    {
+                        string text = _s.Substring(Position, num - Position);
+                        Position = num + 1;
+                        if (ch == '\r' && Position < _length && _s[Position] == '\n')
+                            Position++;
 
-                            return text;
-                        }
+                        return text;
+                    }
                 }
                 num++;
             }

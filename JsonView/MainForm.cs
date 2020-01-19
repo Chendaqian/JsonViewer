@@ -1,10 +1,10 @@
-using System;
-using System.IO;
-using System.Windows.Forms;
-
 using ICSharpCode.TextEditor;
 
 using Json.Viewer;
+
+using System;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Json.JsonView
 {
@@ -175,7 +175,7 @@ namespace Json.JsonView
             text.ActiveTextAreaControl.TextArea.AutoClearSelection = false;
             text.ActiveTextAreaControl.TextArea.ClipboardHandler.Delete(sender, e);
         }
-        
+
         /// <summary>
         /// Selects all text in the textbox
         /// </summary>
@@ -220,7 +220,7 @@ namespace Json.JsonView
             Control t = JsonViewer.Controls.Find("txtFind", true)[0];
             ((TextBox)t).Focus();
         }
-        
+
         /// <summary>
         /// Expands all the nodes
         /// </summary>
@@ -235,7 +235,7 @@ namespace Json.JsonView
 
             try
             {
-                if (((TreeView) c).SelectedNode == null)
+                if (((TreeView)c).SelectedNode == null)
                     return;
 
                 TreeNode topNode = ((TreeView)c).TopNode;
@@ -279,7 +279,6 @@ namespace Json.JsonView
 
         private void tsmiAbout_Click(object sender, EventArgs e)
         {
-
         }
 
         #endregion MenuItem

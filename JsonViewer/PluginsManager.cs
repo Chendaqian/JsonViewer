@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
@@ -15,7 +13,12 @@ namespace Json.Viewer
 
         private readonly List<ICustomTextProvider> textVisualizers = new List<ICustomTextProvider>();
         private readonly List<IJsonVisualizer> visualizers = new List<IJsonVisualizer>();
-        private IJsonVisualizer _defaultVisualizer;
+
+        public IEnumerable<ICustomTextProvider> TextVisualizers => textVisualizers;
+
+        public IEnumerable<IJsonVisualizer> Visualizers => visualizers;
+
+        public IJsonVisualizer DefaultVisualizer { get; private set; }
 
         public PluginsManager()
         {
@@ -25,11 +28,14 @@ namespace Json.Viewer
         {
             try
             {
-                string myDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                //string myDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                 //AppDomain.CurrentDomain.SetupInformation.PrivateBinPath;
-                Configuration config = ConfigurationManager.OpenExeConfiguration(Assembly.GetEntryAssembly()?.Location);
-                
-                InternalConfig(config.AppSettings.Settings);
+
+                Configuration config = ConfigurationManager.OpenExeConfiguration(Assembly.GetExecutingAssembly().Location);
+                if (config == null)
+                    InitDefaults();
+                ViewerConfiguration viewerConfig = (ViewerConfiguration)config.GetSection("jsonViewer");
+                InternalConfig(viewerConfig);
             }
             catch
             {
@@ -39,7 +45,7 @@ namespace Json.Viewer
 
         private void InitDefaults()
         {
-            if (_defaultVisualizer == null)
+            if (DefaultVisualizer == null)
             {
                 AddPlugin(new JsonObjectVisualizer());
                 AddPlugin(new AjaxNetDateTime());
@@ -47,24 +53,25 @@ namespace Json.Viewer
             }
         }
 
-        private void InternalConfig(KeyValueConfigurationCollection plugins)//ViewerConfiguration viewerConfig)
+        private void InternalConfig(ViewerConfiguration viewerConfig)
         {
-            if (plugins == null) return;
-            foreach (KeyValueConfigurationElement keyValue in plugins)
+            if (viewerConfig == null)
+                return;
+
+            foreach (KeyValueConfigurationElement keyValue in viewerConfig.Plugins)
             {
                 string type = keyValue.Value;
                 Type pluginType = Type.GetType(type, false);
                 if (pluginType != null && typeof(IJsonViewerPlugin).IsAssignableFrom(pluginType))
+                    continue;
+                try
                 {
-                    try
-                    {
-                        IJsonViewerPlugin plugin = (IJsonViewerPlugin)Activator.CreateInstance(pluginType);
-                        AddPlugin(plugin);
-                    }
-                    catch
-                    {
-                        //Silently ignore any errors in plugin creation
-                    }
+                    IJsonViewerPlugin plugin = (IJsonViewerPlugin)Activator.CreateInstance(pluginType);
+                    AddPlugin(plugin);
+                }
+                catch
+                {
+                    //Silently ignore any errors in plugin creation
                 }
             }
         }
@@ -76,16 +83,10 @@ namespace Json.Viewer
                 textVisualizers.Add((ICustomTextProvider)plugin);
             if (plugin is IJsonVisualizer)
             {
-                if (_defaultVisualizer == null)
-                    _defaultVisualizer = (IJsonVisualizer)plugin;
+                if (DefaultVisualizer == null)
+                    DefaultVisualizer = (IJsonVisualizer)plugin;
                 visualizers.Add((IJsonVisualizer)plugin);
             }
         }
-
-        public IEnumerable<ICustomTextProvider> TextVisualizers => textVisualizers;
-
-        public IEnumerable<IJsonVisualizer> Visualizers => visualizers;
-
-        public IJsonVisualizer DefaultVisualizer => _defaultVisualizer;
     }
 }

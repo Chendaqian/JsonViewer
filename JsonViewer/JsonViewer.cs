@@ -1,17 +1,16 @@
+using Json.Viewer.Properties;
+
+using Newtonsoft.Json;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Design;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-
-using Newtonsoft.Json;
-
-using Json.Viewer.Properties;
 
 namespace Json.Viewer
 {
@@ -252,6 +251,7 @@ namespace Json.Viewer
                 case Keys.Enter:
                     FindNext(false, true);
                     break;
+
                 case Keys.Escape:
                     HideFind();
                     break;

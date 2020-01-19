@@ -63,22 +63,6 @@ namespace Json.JsonView
             }
         }
 
-        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Escape)
-                Close();
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = MessageBox.Show(
-                           @"ÊÇ·ñÍË³ö£¿",
-                           @"Ñ¯ÎÊ",
-                           MessageBoxButtons.YesNo,
-                           MessageBoxIcon.Question)
-                       != DialogResult.Yes;
-        }
-
         #endregion Form
 
         #region MenuItem

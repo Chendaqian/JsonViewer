@@ -74,13 +74,13 @@ namespace JsonVisualizerVSIX
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             List<string> PAYLOAD_FILE_NAMES = new List<string>()
-                {
-                    "Json.Viewer.dll",
-                    "ICSharpCode.TextEditorEx.dll",
-                    "ICSharpCode.TextEditorEx.dll",
-                    "JsonVisualizerVSIX.dll",
-                    "Newtonsoft.Json.dll",
-                };
+            {
+                "Json.Viewer.dll",
+                "ICSharpCode.TextEditorEx.dll",
+                "ICSharpCode.TextEditorEx.dll",
+                "JsonVisualizerVSIX.dll",
+                "Newtonsoft.Json.dll",
+            };
 
             string sourceFolderFullName;
             string destinationFolderFullName;

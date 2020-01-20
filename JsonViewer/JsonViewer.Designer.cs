@@ -307,10 +307,10 @@ namespace Json.Viewer
             this.txtJson.LineViewerStyle = ICSharpCode.TextEditor.Document.LineViewerStyle.FullRow;
             this.txtJson.Location = new System.Drawing.Point(3, 33);
             this.txtJson.Name = "txtJson";
-            this.txtJson.ShowHRuler = true;
-            this.txtJson.ShowInvalidLines = true;
+            //this.txtJson.ShowHRuler = true;
+            //this.txtJson.ShowInvalidLines = true;
             this.txtJson.Size = new System.Drawing.Size(778, 496);
-            this.txtJson.SyntaxHighlighting = "JavaScript";
+            //this.txtJson.SyntaxHighlighting = "JavaScript";
             this.txtJson.TabIndex = 7;
             this.txtJson.TextChanged += new System.EventHandler(this.txtJson_TextChanged);
             //this.txtJson.ActiveTextAreaControl.ShowScrollBars(Orientation.Vertical, false);

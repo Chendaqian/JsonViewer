@@ -19,6 +19,7 @@ namespace Json.Viewer
         private string _json;
         private ErrorDetails _errorDetails;
         private readonly PluginsManager _pluginsManager = new PluginsManager();
+        private readonly TextEditorManager _textEditorManager = new TextEditorManager();
         private bool _updating;
         private Control _lastVisualizerControl;
 
@@ -28,6 +29,7 @@ namespace Json.Viewer
             try
             {
                 _pluginsManager.Initialize();
+                _textEditorManager.Initialize(this.txtJson);
             }
             catch (Exception e)
             {

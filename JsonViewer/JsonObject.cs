@@ -55,8 +55,8 @@ namespace Json.Viewer
                         else
                         {
                             string s = Value.ToString();
-                            if (s.Length > 5000)
-                                s = s.Substring(0, 5000);
+                            if (s.Length > 2000)
+                                s = s.Substring(0, 2000);
                             val = s;
                         }
                         if (Value is string)

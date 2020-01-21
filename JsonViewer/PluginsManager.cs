@@ -28,9 +28,6 @@ namespace Json.Viewer
         {
             try
             {
-                //string myDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                //AppDomain.CurrentDomain.SetupInformation.PrivateBinPath;
-
                 Configuration config = ConfigurationManager.OpenExeConfiguration(Assembly.GetExecutingAssembly().Location);
                 if (config == null)
                     InitDefaults();

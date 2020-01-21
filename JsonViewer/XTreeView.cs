@@ -205,8 +205,10 @@ namespace Json.Viewer
             foreach (TreeNode node in Nodes)
             {
                 TreeNode clicked = InNode(e.Location, node);
-                if (clicked == null) continue;
+                if (clicked == null)
+                    continue;
                 SelectedNode = clicked;
+
                 return;
             }
         }
@@ -218,7 +220,8 @@ namespace Json.Viewer
             foreach (TreeNode node in Nodes)
             {
                 TreeNode clicked = InNode(e.Location, node);
-                if (clicked == null) continue;
+                if (clicked == null)
+                    continue;
 
                 // 1px偏差
                 Rectangle rectRealBounds = new Rectangle(clicked.Bounds.X, clicked.Bounds.Y, clicked.Bounds.Width + 1, clicked.Bounds.Height);

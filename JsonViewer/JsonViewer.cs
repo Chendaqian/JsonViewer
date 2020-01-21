@@ -353,13 +353,9 @@ namespace Json.Viewer
                 cbVisualizers.Items.AddRange(node.Visualizers.ToArray());
                 int index = cbVisualizers.Items.IndexOf(lastActive);
                 if (index != -1)
-                {
                     cbVisualizers.SelectedIndex = index;
-                }
                 else
-                {
                     cbVisualizers.SelectedIndex = cbVisualizers.Items.IndexOf(_pluginsManager.DefaultVisualizer);
-                }
             }
             finally
             {

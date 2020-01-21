@@ -92,7 +92,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="TextEditorManager.cs" />
-    <Compile Include="TextEditorConfiguration.cs" />
     <Compile Include="ViewerConfiguration.cs" />
     <Compile Include="IJsonViewerPlugin.cs" />
     <Compile Include="JsonObjectTree.cs">

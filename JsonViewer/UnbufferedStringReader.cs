@@ -6,14 +6,12 @@ namespace Json.Viewer
     [Serializable]
     public class UnbufferedStringReader : TextReader
     {
-        // Fields
         private int _length;
 
         private string _s;
 
         public int Position { get; private set; }
 
-        // Methods
         public UnbufferedStringReader(string s)
         {
             _s = s ?? throw new ArgumentNullException(nameof(s));
@@ -58,35 +56,24 @@ namespace Json.Viewer
         public override int Read(char[] buffer, int index, int count)
         {
             if (buffer == null)
-            {
                 throw new ArgumentNullException(nameof(buffer));
-            }
             if (index < 0)
-            {
                 throw new ArgumentOutOfRangeException(nameof(index));
-            }
             if (count < 0)
-            {
                 throw new ArgumentOutOfRangeException(nameof(count));
-            }
             if (buffer.Length - index < count)
-            {
                 throw new ArgumentException("invalid offset length");
-            }
             if (_s == null)
-            {
                 throw new Exception("object closed");
-            }
             int num = _length - Position;
             if (num > 0)
             {
                 if (num > count)
-                {
                     num = count;
-                }
                 _s.CopyTo(Position, buffer, index, num);
                 Position += num;
             }
+
             return num;
         }
 
@@ -120,6 +107,7 @@ namespace Json.Viewer
 
             string text2 = _s.Substring(Position, num - Position);
             Position = num;
+
             return text2;
         }
 
@@ -129,8 +117,8 @@ namespace Json.Viewer
                 throw new Exception("object closed");
 
             string text = Position == 0 ? _s : _s.Substring(Position, _length - Position);
-
             Position = _length;
+
             return text;
         }
     }

@@ -160,7 +160,6 @@ namespace Json.Viewer
 
         public override void SetValue(object component, object value)
         {
-            //TODO: Implement?
         }
 
         public override bool ShouldSerializeValue(object component)

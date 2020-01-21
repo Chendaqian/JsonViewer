@@ -65,8 +65,7 @@ namespace Json.Viewer
 
         private static void AddChildren(object jsonObject, JsonObject obj)
         {
-            JObject javaScriptObject = jsonObject as JObject;
-            if (javaScriptObject != null)
+            if (jsonObject is JObject javaScriptObject)
             {
                 foreach (KeyValuePair<string, JToken> pair in javaScriptObject)
                 {
@@ -75,8 +74,7 @@ namespace Json.Viewer
             }
             else
             {
-                JArray javaScriptArray = jsonObject as JArray;
-                if (javaScriptArray != null)
+                if (jsonObject is JArray javaScriptArray)
                 {
                     for (int i = 0; i < javaScriptArray.Count; i++)
                     {

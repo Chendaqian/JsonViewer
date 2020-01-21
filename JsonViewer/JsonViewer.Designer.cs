@@ -313,6 +313,7 @@ namespace Json.Viewer
             //this.txtJson.SyntaxHighlighting = "JavaScript";
             this.txtJson.TabIndex = 7;
             this.txtJson.TextChanged += new System.EventHandler(this.txtJson_TextChanged);
+            //this.txtJson.Document.FoldingManager.FoldingStrategy = new JsonFolding();
             //this.txtJson.ActiveTextAreaControl.ShowScrollBars(Orientation.Vertical, false);
             // 
             // toolStrip1

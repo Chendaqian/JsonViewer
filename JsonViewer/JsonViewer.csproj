@@ -115,6 +115,7 @@
     <Compile Include="PluginsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnbufferedStringReader.cs" />
+    <Compile Include="JsonFolding.cs" />
     <Compile Include="XTreeView.cs">
       <SubType>Component</SubType>
     </Compile>

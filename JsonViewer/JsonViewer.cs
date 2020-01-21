@@ -152,6 +152,7 @@ namespace Json.Viewer
             //this.txtJson.ActiveTextAreaControl.ShowScrollBars(Orientation.Vertical, isVisible);
 
             Json = txtJson.Text;
+            this.txtJson.Document.FoldingManager.UpdateFoldings(null, null);
         }
 
         private void txtFind_TextChanged(object sender, EventArgs e)

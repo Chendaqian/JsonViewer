@@ -77,7 +77,6 @@ namespace JsonVisualizerVSIX
             {
                 "Json.Viewer.dll",
                 "ICSharpCode.TextEditorEx.dll",
-                "ICSharpCode.TextEditorEx.dll",
                 "JsonVisualizerVSIX.dll",
                 "Newtonsoft.Json.dll",
             };
@@ -140,7 +139,7 @@ namespace JsonVisualizerVSIX
                 copy = true;
             }
 
-            if (copy)
+            //if (copy)
             {
                 File.Copy(sourceFileFullName, destinationFileFullName, true);
             }

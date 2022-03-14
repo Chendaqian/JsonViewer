@@ -26,24 +26,27 @@ namespace Json.Viewer
         private void InitControl(TextEditorControlEx ctrol, Configuration config)
         {
             ViewerConfiguration viewerConfig = (ViewerConfiguration)config.GetSection("jsonViewer");
-            foreach (KeyValueConfigurationElement item in viewerConfig.TextEditor)
+            if (viewerConfig != null)
             {
-                switch (item.Key)
+                foreach (KeyValueConfigurationElement item in viewerConfig.TextEditor)
                 {
-                    case "SyntaxHighlighting":
-                        ctrol.SyntaxHighlighting = item.Value;
-                        break;
+                    switch (item.Key)
+                    {
+                        case "SyntaxHighlighting":
+                            ctrol.SyntaxHighlighting = item.Value;
+                            break;
 
-                    case "ShowInvalidLines":
-                        ctrol.ShowInvalidLines = bool.TryParse(item.Value, out bool lines) ? lines : true;
-                        break;
+                        case "ShowInvalidLines":
+                            ctrol.ShowInvalidLines = bool.TryParse(item.Value, out bool lines) ? lines : true;
+                            break;
 
-                    case "ShowHRuler":
-                        ctrol.ShowHRuler = bool.TryParse(item.Value, out bool ruler) ? ruler : true;
-                        break;
+                        case "ShowHRuler":
+                            ctrol.ShowHRuler = bool.TryParse(item.Value, out bool ruler) ? ruler : true;
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
+                    }
                 }
             }
         }

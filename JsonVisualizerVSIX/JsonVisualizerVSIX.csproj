@@ -11,10 +11,11 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\ico.ico</ApplicationIcon>
@@ -75,7 +76,6 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Key.snk" />
     <None Include="packages.config" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>

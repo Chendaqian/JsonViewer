@@ -33,7 +33,7 @@ namespace Json.Viewer
             }
             catch (Exception e)
             {
-                MessageBox.Show(string.Format(Resources.ConfigMessage, e.Message), "Json Viewer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(string.Format(Resources.ConfigMessage, e.Message + "--" + e.StackTrace), "Json Viewer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
